@@ -17,5 +17,9 @@ app.use('/', (request, response) => {
 
 io.on('connection', socket => {
   console.log(`Socket connected: ${socket.id}`);
+
+  socket.on('sendMessage', data => {
+    console.log(data.author, data.message);
+  });
 })
 server.listen(3000);
