@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <form id="chat">
+  <form id="chat" method="post">
     <input type="text" name="username" id="username" placeholder="Type your username">
     <div id="messages"></div>
     <input type="text" name="message" id="message" placeholder="Type your message">
@@ -27,7 +27,12 @@
       let author = $('#username').val();
       let message = $('#message').val();
 
-      socket.emit('sendMessage', { author: author, message: message });
+      let messageObject = {
+        author: author, 
+        message: message
+      }
+
+      socket.emit('sendMessage', messageObject);
     });
   </script>
 </body>
