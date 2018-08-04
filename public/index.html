@@ -28,6 +28,9 @@
 
     let socket = io('http://localhost:3000/');
 
+    socket.on('receiveMessage', message => {
+      renderMessage(message);
+    });
     $('#chat').submit(function(event){
       event.preventDefault();
 
