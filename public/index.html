@@ -19,6 +19,13 @@
   </form>
   
   <script type="text/javascript">
+
+    function renderMessage(message){
+      $('#messages').append(
+        `<div class="message" ><strong>${message.author}: </strong>${message.message} </div>`
+        );
+    }
+
     let socket = io('http://localhost:3000/');
 
     $('#chat').submit(function(event){
@@ -31,6 +38,8 @@
         author: author, 
         message: message
       }
+
+      renderMessage(messageObject);
 
       socket.emit('sendMessage', messageObject);
     });
