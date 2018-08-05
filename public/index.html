@@ -28,9 +28,18 @@
 
     let socket = io('http://localhost:3000/');
 
+
+    socket.on('previousMessages', messages => {
+      for (message of messages){
+        renderMessage(message);
+      }
+      console.log('passed through here')
+    });
+    
     socket.on('receiveMessage', message => {
       renderMessage(message);
     });
+
     $('#chat').submit(function(event){
       event.preventDefault();
 
@@ -45,6 +54,8 @@
       renderMessage(messageObject);
 
       socket.emit('sendMessage', messageObject);
+
+
     });
   </script>
 </body>
