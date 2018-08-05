@@ -33,9 +33,9 @@
       for (message of messages){
         renderMessage(message);
       }
-      console.log('passed through here')
+     
     });
-    
+
     socket.on('receiveMessage', message => {
       renderMessage(message);
     });
